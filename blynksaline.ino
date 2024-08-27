@@ -1,14 +1,13 @@
 // Include the necessary libraries
 #define BLYNK_TEMPLATE_ID "TMPL3Tv8whDlm"
 #define BLYNK_TEMPLATE_NAME "patient monitoring"
-#define BLYNK_AUTH_TOKEN "pizyEk3MS9xiaEBabLairbeg-nBIj5Jv"
-
+#define BLYNK_AUTH_TOKEN "2uvpHoLHXwESy4Lw-6EhAA5McAbqh4gU"
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 #include <HX711.h>
 
 // Blynk credentials
-char auth[] = "pizyEk3MS9xiaEBabLairbeg-nBIj5Jv";
+char auth[] = "2uvpHoLHXwESy4Lw-6EhAA5McAbqh4gU";
 char ssid[] = "Galaxy S10plus";
 char pass[] = "qchahiye";
 
