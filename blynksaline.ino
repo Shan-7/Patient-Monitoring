@@ -10,7 +10,7 @@
 // Blynk credentials
 char auth[] = "38bekMbW19eB8kLVOQFUgmkj8WGn2Fde";
 char ssid[] = "Galaxy S10plus";
-char pass[] = " qchahiye";
+char pass[] = "qchahiye";
 
 // Load Cell and HX711 settings
 const int LOADCELL_DOUT_PIN = 16;
