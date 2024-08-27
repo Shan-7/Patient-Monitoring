@@ -1,7 +1,7 @@
 // Include the necessary libraries
-#define BLYNK_TEMPLATE_ID "TMPL3MerlXbZx"
-#define BLYNK_TEMPLATE_NAME "SmartBoard"
-#define BLYNK_AUTH_TOKEN "38bekMbW19eB8kLVOQFUgmkj8WGn2Fde"
+#define BLYNK_TEMPLATE_ID "TMPL3Tv8whDlm"
+#define BLYNK_TEMPLATE_NAME "patient monitoring"
+#define BLYNK_AUTH_TOKEN "pizyEk3MS9xiaEBabLairbeg-nBIj5Jv"
 
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
@@ -9,8 +9,8 @@
 
 // Blynk credentials
 char auth[] = "38bekMbW19eB8kLVOQFUgmkj8WGn2Fde";
-char ssid[] = "Galaxy M31";
-char pass[] = "9067746551";
+char ssid[] = "Galaxy S10plus";
+char pass[] = " qchahiye";
 
 // Load Cell and HX711 settings
 const int LOADCELL_DOUT_PIN = 16;
