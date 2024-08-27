@@ -1,10 +1,11 @@
-// Include the necessary libraries
 #define BLYNK_TEMPLATE_ID "TMPL3Tv8whDlm"
 #define BLYNK_TEMPLATE_NAME "patient monitoring"
 #define BLYNK_AUTH_TOKEN "2uvpHoLHXwESy4Lw-6EhAA5McAbqh4gU"
+
 #include <WiFi.h>
 #include <BlynkSimpleEsp32.h>
 #include <HX711.h>
+#include "soc/rtc.h"
 
 // Blynk credentials
 char auth[] = "2uvpHoLHXwESy4Lw-6EhAA5McAbqh4gU";
@@ -16,7 +17,7 @@ const int LOADCELL_DOUT_PIN = 16;
 const int LOADCELL_SCK_PIN = 4;
 
 HX711 scale;
-float calibration_factor = 1100;  // Example value; adjust as needed
+float calibration_factor = 1100;  // Example value; will be recalibrated
 
 BlynkTimer timer;
 
@@ -25,6 +26,12 @@ BlynkTimer timer;
 
 void setup() {
   Serial.begin(115200);
+
+  // Reduce CPU frequency to 80 MHz for stability
+  rtc_cpu_freq_config_t config;
+  rtc_clk_cpu_freq_get_config(&config);
+  rtc_clk_cpu_freq_to_config(RTC_CPU_FREQ_80M, &config);
+  rtc_clk_cpu_freq_set_config_fast(&config);
 
   // Initialize HX711
   scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
@@ -37,7 +44,20 @@ void setup() {
   delay(5000);
   scale.tare();
   Serial.println("Tare done...");
-  
+  Serial.println("Place a known weight on the scale for calibration...");
+  delay(5000);
+
+  long reading = scale.get_units(10);
+  Serial.print("Known weight reading: ");
+  Serial.println(reading);
+
+  // Adjust the calibration factor based on the known weight
+  float known_weight = 1000.0;  // Known weight in grams (1 kg)
+  calibration_factor = reading / known_weight;
+  scale.set_scale(calibration_factor);
+  Serial.print("Calibration factor set to: ");
+  Serial.println(calibration_factor);
+
   // Set the interval to measure and send the weight percentage
   timer.setInterval(1000L, sendWeightPercentage);
 
