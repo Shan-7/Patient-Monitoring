@@ -8,7 +8,7 @@
 #include <HX711.h>
 
 // Blynk credentials
-char auth[] = "38bekMbW19eB8kLVOQFUgmkj8WGn2Fde";
+char auth[] = pizyEk3MS9xiaEBabLairbeg-nBIj5Jv";
 char ssid[] = "Galaxy S10plus";
 char pass[] = "qchahiye";
 
